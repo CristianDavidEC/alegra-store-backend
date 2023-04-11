@@ -1,7 +1,7 @@
-import express from "express";
-import morgan from "morgan";
+const express = require("express");
+const morgan = require("morgan");
 
-import articlesRoutes from "./routes/articles.routes.js";
+const articlesRoutes = require("./routes/articles");
 
 const app = express();
 
@@ -16,4 +16,6 @@ app.use((req, res, next) => {
   res.status(404).json({ message: "Not found" });
 });
 
-export default app;
+module.exports = app;
+
+

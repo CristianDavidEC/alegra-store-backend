@@ -1,10 +1,9 @@
 
-import app from "./app.js";
-import { PORT } from "./config.js";
+const app = require("./app");
+const { PORT } = require("./config/config.js");
 
 app.listen(PORT);
 console.log(`Server on port http://localhost:${PORT}`);
-
 
 
 
