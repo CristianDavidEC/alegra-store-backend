@@ -10,7 +10,7 @@ class Article {
     this.createDate = new Date(CreateDate).toISOString().substring(0, 10);
 
   }
-  
+
 }
 
 module.exports = Article;

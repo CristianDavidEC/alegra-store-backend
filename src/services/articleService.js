@@ -1,22 +1,42 @@
 const pool = require('../config/db');
 const Article = require('../models/article');
-const { Utils } = require('../utils/utils');
-
 
 const getArticles = async ({ id, typeItem, createDate, startDate, endDate }) => {
-  const queryParams = [id, typeItem, createDate, startDate, endDate];
-  const procedureName = 'get_articles';
+  let sqlQuery = 'SELECT * FROM Articles';
+  const queryParams = [];
+
+  // Agregar cláusula WHERE si se especifica algún parámetro de filtro
+  if (id) {
+    sqlQuery += ' WHERE id = ?';
+    queryParams.push(id);
+  }
+
+  if (typeItem) {
+    sqlQuery += (queryParams.length ? ' AND' : ' WHERE') + ' TypeItem = ?';
+    queryParams.push(typeItem);
+  }
+
+  if (startDate && endDate) {
+    sqlQuery += (queryParams.length ? ' AND' : ' WHERE') + ' CreateDate BETWEEN ? AND ?';
+    queryParams.push(startDate, endDate);
+  } else if (startDate) {
+    sqlQuery += (queryParams.length ? ' AND' : ' WHERE') + ' CreateDate >= ?';
+    queryParams.push(startDate);
+  } else if (endDate) {
+    sqlQuery += (queryParams.length ? ' AND' : ' WHERE') + ' CreateDate <= ?';
+    queryParams.push(endDate);
+  }
 
   return new Promise((resolve, reject) => {
-    pool.query(`CALL ${procedureName}(?, ?, ?, ?, ?)`, queryParams, (error, results, fields) => {
+    pool.query(sqlQuery, queryParams, (error, results, fields) => {
       if (error) reject(error);
 
-      if (!results || !Array.isArray(results[0])) {
+      if (!results || !Array.isArray(results)) {
         resolve([]);
         return;
       }
 
-      const formattedResults = results[0].map((article) => {
+      const formattedResults = results.map((article) => {
         return new Article(article);
       });
 
@@ -24,7 +44,6 @@ const getArticles = async ({ id, typeItem, createDate, startDate, endDate }) => 
     });
   });
 };
-
 
 
 module.exports = {
