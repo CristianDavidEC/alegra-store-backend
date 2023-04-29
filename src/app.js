@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 
-const articlesRoutes = require("./routes/articles");
+const productsRoutes = require("./routes/products.routes");
 
 const app = express();
 
@@ -10,9 +10,10 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // Routes
-app.use("/api", articlesRoutes);
+app.use("/api", productsRoutes);
 
 app.use((req, res, next) => {
+  
   res.status(404).json({ message: "Not found" });
 });
 
