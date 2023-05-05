@@ -11,8 +11,6 @@ const getCategoriesController = async (req, res, next) => {
   }
 };
 
-
-
 module.exports = {
   getCategoriesController
 };

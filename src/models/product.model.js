@@ -1,6 +1,6 @@
 
 class Product {
-  constructor({ code, name, categoryName, weight, quantity, entryDate, expirationDate, description }) {
+  constructor({ code, name, categoryName, weight, quantity, entryDate, expirationDate, description, salePrice, purchasePrice }) {
     this.code = code;
     this.name = name;
     this.categoryName = categoryName;
@@ -9,6 +9,8 @@ class Product {
     this.entryDate = new Date(entryDate).toISOString().substring(0, 10);
     this.expirationDate = expirationDate ? new Date(expirationDate).toISOString().substring(0, 10) : null;
     this.description = description;
+    this.salePrice=salePrice;
+    this.purchasePrice=purchasePrice;
   }
 }
 
