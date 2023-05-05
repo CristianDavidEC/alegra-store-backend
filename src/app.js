@@ -3,6 +3,7 @@ const morgan = require("morgan");
 
 const productsRoutes = require("./routes/products.routes");
 const categoriesRoutes = require("./routes/categories.routes");
+const salesReportRoutes = require("./routes/salesReport.routes");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 // Routes
 app.use("/api", productsRoutes);
 app.use("/api", categoriesRoutes);
+app.use("/api", salesReportRoutes);
 
 app.use((req, res, next) => {
   
