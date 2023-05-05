@@ -14,6 +14,8 @@ router.post('/products', productsController.createProductController);
 // Ruta para actualizar un artículo por id
 router.put('/products', productsController.updateProductController);
 
+
+
 module.exports = router;
 
 

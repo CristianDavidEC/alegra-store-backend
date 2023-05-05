@@ -62,7 +62,6 @@ const createProduct = async ({ code, name, idCategory, weight, quantity, entryDa
 
 const updateProduct = async ({ code, name, idCategory, weight, quantity, entryDate, expirationDate, description }) => {
   try {
-    console.log("----------------------------->>>>>>>>>>>>>>>>>>>>>>>");
 
     pool.query(
       'CALL updateProduct(?, ?, ?, ?, ?, ?, ?, ?)',
@@ -75,10 +74,12 @@ const updateProduct = async ({ code, name, idCategory, weight, quantity, entryDa
 };
 
 
+
+
+
 module.exports = {
   getProducts,
   deleteProduct,
   createProduct,
   updateProduct,
-
 };

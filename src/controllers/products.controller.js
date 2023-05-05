@@ -38,7 +38,6 @@ const updateProductController = async (req, res, next) => {
     const { code, name, idCategory, weight, quantity, entryDate, expirationDate, description } = req.body;
 
     const result = await updateProduct({ code, name, idCategory, weight, quantity, entryDate, expirationDate, description });
-    console.log(result);
     return result ? res.sendStatus(200) : res.status(404).json({ message: "Product not found" });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
@@ -47,11 +46,13 @@ const updateProductController = async (req, res, next) => {
 
 
 
+
+
 module.exports = {
   getProductsController,
   createProductController,
   updateProductController,
-  deleteProductController
+  deleteProductController,
 };
 
 
