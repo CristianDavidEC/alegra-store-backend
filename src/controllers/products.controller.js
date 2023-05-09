@@ -20,9 +20,9 @@ const deleteProductController = async (req, res, next) => {
 
 const createProductController = async (req, res, next) => {
   try {
-    const { code, name, idCategory, weight, quantity, entryDate, expirationDate, description } = req.body;
+    const { code, name, idCategory, weight, quantity, entryDate, expirationDate, description, salePrice, purchasePrice } = req.body;
 
-    const result = await createProduct({ code, name, idCategory, weight, quantity, entryDate, expirationDate, description });
+    const result = await createProduct({ code, name, idCategory, weight, quantity, entryDate, expirationDate, description,salePrice, purchasePrice });
 
     return result ? res.sendStatus(201) : res.status(400).json({ message: "Error creating product" });
   } catch (err) {

@@ -48,12 +48,12 @@ const deleteProduct = async (code) => {
 
 
 
-const createProduct = async ({ code, name, idCategory, weight, quantity, entryDate, expirationDate, description }) => {
+const createProduct = async ({ code, name, idCategory, weight, quantity, entryDate, expirationDate, description,salePrice,purchasePrice }) => {
 
   try {
     pool.query(
-      'CALL createProduct(?, ?, ?, ?, ?, ?, ?, ?)',
-      [code, name, idCategory, weight, quantity, entryDate, expirationDate, description]);
+      'CALL createProduct(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [code, name, idCategory, weight, quantity, entryDate, expirationDate, description,salePrice,purchasePrice]);
     return true;
   } catch (error) {
     return false;
@@ -62,12 +62,12 @@ const createProduct = async ({ code, name, idCategory, weight, quantity, entryDa
 
 
 
-const updateProduct = async ({ code, name, idCategory, weight, quantity, entryDate, expirationDate, description }) => {
+const updateProduct = async ({ code, name, idCategory, weight, quantity, entryDate, expirationDate, description,salePrice,purchasePrice }) => {
   try {
 
     pool.query(
-      'CALL updateProduct(?, ?, ?, ?, ?, ?, ?, ?)',
-      [code, name, idCategory, weight, quantity, entryDate, expirationDate, description]);
+      'CALL updateProduct(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [code, name, idCategory, weight, quantity, entryDate, expirationDate, description,salePrice,purchasePrice]);
 
       return true;
   } catch (error) {
