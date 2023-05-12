@@ -9,12 +9,14 @@ const getProductsController = async (req, res, next) => {
   }
 };
 
+
 const deleteProductController = async (req, res, next) => {
   try {
     const {code} = req.body;
-    return deleteProduct(code) ? res.sendStatus(200): res.status(404).json({ message: "Product not found" });
-      } catch (err) {
-        res.status(500).json({ message: "internal error server" });
+    const result = await deleteProduct(code);
+    return result ? res.sendStatus(200) : res.status(404).json({ message: "Product not found" });
+  } catch (err) {
+    res.status(500).json({ message: "internal error server" });
   }
 };
 
@@ -24,12 +26,13 @@ const createProductController = async (req, res, next) => {
 
     const result = await createProduct({ code, name, idCategory, weight, quantity, entryDate, expirationDate, description,salePrice, purchasePrice });
 
-    return result ? res.sendStatus(201) : res.status(400).json({ message: "Error creating product" });
+    return (
+      result ? res.sendStatus(201) : res.status(400).json({ message: "Error creating product" })
+    );
   } catch (err) {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
 
 
 
