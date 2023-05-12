@@ -31,8 +31,6 @@ const createProductController = async (req, res, next) => {
 };
 
 
-
-
 const updateProductController = async (req, res, next) => {
   try {
     const { code, name, idCategory, weight, quantity, entryDate, expirationDate, description } = req.body;

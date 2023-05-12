@@ -19,6 +19,7 @@ const getProducts = async (params) => {
   };
 
   return new Promise((resolve, reject) => {
+    console.log(entryDateStart);
     pool.query('CALL getProducts(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [queryParams.inCode, queryParams.inName, queryParams.inIdCategory, queryParams.inWeight, queryParams.inQuantity, queryParams.inEntryDateStart, queryParams.inEntryDateEnd, queryParams.inExpirationDate, queryParams.inDescription,queryParams.inSalePrice,queryParams.inPurchasePrice], (error, results, fields) => {
       if (error) reject(error);
 
