@@ -16,6 +16,30 @@ describe('getProducts', () => {
     expect(result).toEqual([]);
   });
 
+  it('returns products that match the code 00100', async () => {
+    // Arrange
+    const params = { code: '00100' };
+    const expected = [{
+      "code": "00100",
+      "name": "Prueba Mantenimiento",
+      "idCategory": 2,
+      "categoryName": "Bebidas no alcohólicas",
+      "weight": 0,
+      "quantity": 1,
+      "purchasePrice": 11111,
+      "salePrice": 22222,
+      "entryDate": "2023-05-28",
+      "expirationDate": "2023-05-28",
+      "description": "Prueba"
+    }];
+
+    // Act
+    const result = await getProducts(params);
+
+    // Assert
+    expect(result).toEqual(expected);
+  });
+
   it('returns products that match the query', async () => {
     // Arrange
     const params = { code: '0001' };

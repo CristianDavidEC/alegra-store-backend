@@ -7,5 +7,3 @@ router.get('/categories', categoriesController.getCategoriesController);
 
 
 module.exports = router;
-
-

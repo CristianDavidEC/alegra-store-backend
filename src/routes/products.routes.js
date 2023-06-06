@@ -3,7 +3,7 @@ const router = express.Router();
 const productsController = require('../controllers/products.controller');
 
 // Ruta para obtener todos los artículos o filtrarlos según parámetros opcionales
-router.post('/getProducts', productsController.getProductsController);
+router.get('/getProducts', productsController.getProductsController);
 
 // Ruta para eliminar un artículo por id
 router.delete('/products', productsController.deleteProductController);
